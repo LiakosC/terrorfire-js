@@ -1,0 +1,71 @@
+<html>
+<head>
+	<title>Terror Fire</title>
+	<!meta http-equiv = "pragma" content = "no-cache">
+	<script language = "javascript" type = "text/javascript" src = "js/phaser.min.js"></script>
+	<script language = "javascript" type = "text/javascript" src = "js/Button.js"></script>
+</head>
+<body style="background:grey;">
+</body>
+</html>
+
+<script>
+window.oncontextmenu = function(e) {e.preventDefault();}
+</script>
+<script language = "javascript" type = "text/javascript" src = "js/loading.js"></script>
+<script language = "javascript" type = "text/javascript" src = "js/menu.js"></script>
+<script language = "javascript" type = "text/javascript" src = "js/game.js"></script>
+<script language = "javascript" type = "text/javascript" src = "js/levels.js"></script>
+<script>
+
+
+var keys = {};
+var sounds = {};
+sounds.music = null;
+var hero;
+var loading = {};
+var menu = {};
+var BOOT = {};
+var PH;
+function analyze(obj) {
+	for (var key in obj) {console.log(key);}
+}
+BOOT.state = {
+	init: function() {
+		PH.input.maxPointers = 1;
+		PH.stage.disableVisibilityChange = true;
+		if (PH.device.desktop) {
+			
+		} else {
+			PH.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+			PH.scale.setMinMax(480, 260, 1024, 768);
+			PH.scale.forceLandscape = true;
+		}
+		PH.scale.pageAlignHorizontally = true;
+		PH.scale.pageAlignVertically = true;
+		PH.scale.refresh();
+	},
+	preload: function() {
+		console.log("boot preload");
+		PH.load.image("loading", "images/loading.png");
+		PH.load.image("loading_bar_empty", "images/loading_bar_empty.png");
+		PH.load.image("loading_bar", "images/loading_bar.png");
+		PH.load.image("loading_completed", "images/loading_completed.png");
+		PH.load.spritesheet("click_to_continue", "images/click_to_continue.png", 1972/4, 356/4, 16);
+	},
+	create: function() {
+		console.log("boot create");
+		PH.state.start("loading");
+	}
+}
+window.onload = function() {
+	PH = new Phaser.Game(700, 600, Phaser.CANVAS, "");
+	PH.state.add("boot", BOOT.state);
+	PH.state.add("loading", LOADING.state);
+	PH.state.add("menu", MENU.state);
+	PH.state.add("game", game.state);
+	PH.state.start("boot");
+}
+
+
+</script>
