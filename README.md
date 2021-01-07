@@ -4,6 +4,8 @@ I made this zombie shooter prototype back in 2010. I was excited to record my ow
 
 If you beat this game, you come from another universe.
 
-Graphics Library:   PhaserJS
-Music:              Two Steps From Hell
+Graphics Library:   [PhaserJS](https://phaser.io/)
+
+Music:              by [Two Steps From Hell](https://www.twostepsfromhell.com/)
+
 Sound Effects:      https://freesound.org
